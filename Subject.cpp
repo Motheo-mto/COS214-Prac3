@@ -3,38 +3,37 @@
 
 using namespace std;
 
-bool Subject::attach(Observer* thing)
+void Subject::attach(Observer* observer)
 {
-    if(thing == nullptr)
-        return false;
-    observer.push_back(thing);
-    return true;
+    if(observer == nullptr)
+        return ;
+    observerList.push_back(observer);
+    
 }
 
-bool Subject::detach(Observer* thing)
+void Subject::detach(Observer* observer)
 {
     bool found = false;
-    vector<Observer*>::iterator it = observer.begin();
-    while((it != observer.end()) && (!found))
+    vector<Observer*>::iterator it = observerList.begin();
+    while((it != observerList.end()) && (!found))
     {
-        if(*it == thing)
+        if(*it == observer)
         {
             found = true;
-            observer.erase(it);
+            observerList.erase(it);
         }
         else
         {
             ++it;
         }
     }
-    return found;
 }
 
-void Subject::notify()
+void Subject::notify(int capacity, string status)
 {
     vector<Observer*>::iterator it;
-    for(it = observer.begin(); it != observer.end(); ++it)
+    for(it = observerList.begin(); it != observerList.end(); ++it)
     {
-        (*it)->update();
+        (*it)->update(capacity, status);
     }
 }

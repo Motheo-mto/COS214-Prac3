@@ -3,7 +3,3 @@
 
 using namespace std;
 
-void Gate::printGate()
-{
-    cout << "Setting up Gate" << endl;
-}

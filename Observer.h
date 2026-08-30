@@ -7,7 +7,7 @@ using namespace std;
 
 class Observer
 {
-
+public:
     virtual void update(int capacity, string status) = 0;
 };
 
