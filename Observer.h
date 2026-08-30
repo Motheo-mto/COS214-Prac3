@@ -1,12 +1,14 @@
 #ifndef OBSERVER_H
 #define OBSERVER_H
 
+#include <iostream>
+
+using namespace std;
+
 class Observer
 {
-public:
-    Observer();
-    virtual ~Observer(){}
-    virtual void update() = 0;
+
+    virtual void update(int capacity, string status) = 0;
 };
 
-#endif // OBSERVER_H
+#endif

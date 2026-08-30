@@ -3,18 +3,11 @@
 
 #include "EventUnit.h"
 
-class Gate : public EventUnit
-{
-public:
-    Gate() {}
-    void update() override;
+class Gate : public EventUnit{
+    void update(string status, int capacity) override;
+    string reportStatus() const override;
     void open() override;
-    void close() override;
-    void reportStatus() const override;
-    int getCapacity() const override;
-    void printGate();
-
-
+    void close() override; 
 };
 
 #endif

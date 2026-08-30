@@ -3,18 +3,11 @@
 
 #include "EventUnit.h"
 
-class Merch : public EventUnit
-{
-public:
-    Merch() {};
-    void update() override;
+class Merch : public EventUnit{
+    void update(string status, int capacity) override;
+    string reportStatus() const override;
     void open() override;
-    void close() override;
-    void reportStatus() const override;
-    int getCapacity() const override;
-    void printMerch();
-
-
+    void close() override; 
 };
 
 #endif
