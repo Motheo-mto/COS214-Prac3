@@ -10,7 +10,7 @@ class EventComponent : public Subject{
     string status;
     
     public:
-     virtual void add(EventComponent component);
+    virtual void add(EventComponent component);
     virtual void remove(EventComponent component);
     EventComponent();
     EventComponent(string name, string status, int capactiy);

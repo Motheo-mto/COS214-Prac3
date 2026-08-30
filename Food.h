@@ -4,11 +4,10 @@
 #include "EventUnit.h"
 
 class Food : public EventUnit{
-    void update(string status, int capacity);
-    string reportStatus() const;
-    int getCapacity() const;
-    void open();
-    void close(); 
+    void update(string status, int capacity) override;
+    string reportStatus() const override;
+    void open() override;
+    void close() override; 
 };
 
 #endif
