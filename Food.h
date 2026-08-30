@@ -1,9 +1,9 @@
-#ifndef GATE_H
-#define GATE_H
+#ifndef FOOD_H
+#define FOOD_H
 
 #include "EventUnit.h"
 
-class Gate : public EventUnit{
+class Food : public EventUnit{
     void update(string status, int capacity);
     string reportStatus() const;
     int getCapacity() const;

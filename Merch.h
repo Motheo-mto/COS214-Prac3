@@ -1,9 +1,9 @@
-#ifndef GATE_H
-#define GATE_H
+#ifndef MERCH_H
+#define MERCH_H
 
 #include "EventUnit.h"
 
-class Gate : public EventUnit{
+class Merch : public EventUnit{
     void update(string status, int capacity);
     string reportStatus() const;
     int getCapacity() const;

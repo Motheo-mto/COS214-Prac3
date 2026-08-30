@@ -1,22 +1,24 @@
-#ifndef EVENTCOMPONENT_H
-#define EVENTCOMPONENT_H
+#ifndef EVENTGROUP_H
+#define EVENTGROUP_H
+
 #include "EventComponent.h"
-#include <string>
-using namespace std;
 
-class EventGroup : public EventComponent {
+
+class EventGroup : public EventComponent , public Observer{
     private:
-	std::vector<EventComponent*> children;
-public:
-    EventGroup(string name);
+    vector<EventComponent*> children;
 
-	void add(EventComponent* ec);
-
-	void remove(EventComponent* ec);
-
-    std::vector<EventComponent*> getChildren();
-
-	~EventGroup();
+    public:
+    void add(EventComponent component);
+    void remove(EventComponent component);
+    EventGroup();
+    EventGroup(int capacity, string status, string name);
+    ~EventGroup();
+    void update(string status, int capacity);
+    string reportStatus() const;
+    int getCapacity() const;
+    void open();
+    void close();          
 };
 
 #endif

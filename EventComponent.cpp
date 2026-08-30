@@ -2,17 +2,25 @@
 #include <iostream>
 #include <string>
 
-EventComponent::EventComponent(std::string n){
+EventComponent::EventComponent(){}
+
+EventComponent(string name, string status, int capactiy){
+    this->name = name;
+    this->status = status;
+    this->capacity = capacity;
+}
+string getName() const{
+    return name;
+}
+
+void setName(string n){
     name = n;
 }
-
-string EventComponent::getName() {
-	return this->name;
+void setStatus(string n){
+    status = n;
 }
-
-void EventComponent::doSomething(){
-    std::cout<< this->getName() << " is doing something"<<std::endl;
+void setCapacity(int n){
+    capacity = n;
 }
-
  
 EventComponent::~EventComponent(){}
