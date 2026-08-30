@@ -9,16 +9,19 @@ class EventGroup : public EventComponent , public Observer{
     vector<EventComponent*> children;
 
     public:
-    void add(EventComponent component);
-    void remove(EventComponent component);
     EventGroup();
     EventGroup(int capacity, string status, string name);
     ~EventGroup();
-    void update(string status, int capacity);
-    string reportStatus() const;
-    int getCapacity() const;
-    void open();
-    void close();          
+
+    void add(EventComponent component) override;
+    void remove(EventComponent component) override;
+    void open() override;
+    void close() override; 
+
+    void update(string status, int capacity) override;
+    string reportStatus() const override;
+    int getCapacity() const override;
+             
 };
 
 #endif
