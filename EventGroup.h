@@ -2,6 +2,7 @@
 #define EVENTGROUP_H
 
 #include "EventComponent.h"
+#include "Observer.h"
 
 class EventGroup : public EventComponent, public Observer
 {
