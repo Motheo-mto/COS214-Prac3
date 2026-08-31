@@ -19,7 +19,7 @@ public:
     string getName() const;
     void setName(string n);
     void setStatus(string n);
-    virtual string reportStatus() const = 0;
+    virtual void reportStatus() const = 0;
     virtual int getCapacity() const = 0;
     void setCapacity(int n);
     virtual void open() = 0;

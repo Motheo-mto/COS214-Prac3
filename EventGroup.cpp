@@ -82,7 +82,7 @@ int EventGroup::getCapacity() const
 }
 
 /// still need to implement these, i dont know how
-string EventGroup::reportStatus() const
+void EventGroup::reportStatus() const
 {
 }
 
