@@ -7,8 +7,8 @@ EventUnit::EventUnit() : EventComponent(), isOpen(false)
 {
 }
 
-EventUnit::EventUnit(string name, string status, int capacity)
-    : EventComponent(name, status, capacity)
+EventUnit::EventUnit(string name, int capacity)
+    : EventComponent(name, capacity)
 {
 }
 

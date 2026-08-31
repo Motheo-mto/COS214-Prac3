@@ -5,17 +5,18 @@
 
 class Merch : public EventUnit
 {
+private:
+    int stockLevel;
+    int previousCapacity;
 public:
     Merch();
-    Merch(string name, string status, int capacity);
+    Merch(string name, int capacity);
     ~Merch();
     void update(string noticeType) override;
     void reportStatus() const override;
     int getCapacity() const override;
     void open() override;
     void close() override;
-private:
-    int stockLevel;
 };
 
 #endif

@@ -7,7 +7,7 @@ class Gate : public EventUnit
 {
 public:
     Gate();
-    Gate(string name, string status, int capacity);
+    Gate(string name, int capacity);
     ~Gate();
     void update(string noticeType) override;
     void reportStatus() const override;

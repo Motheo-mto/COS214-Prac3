@@ -21,14 +21,13 @@ void Subject::attach(Observer *observer)
 
 void Subject::detach(Observer *observer)
 {
-    bool found = false;
     vector<Observer *>::iterator it = observerList.begin();
-    while ((it != observerList.end()) && (!found))
+    while (it != observerList.end())
     {
         if (*it == observer)
         {
-            found = true;
-            observerList.erase(it);
+            it = observerList.erase(it);
+            break;
         }
         else
         {
@@ -45,3 +44,5 @@ void Subject::notify(string noticeType)
         (*it)->update(noticeType);
     }
 }
+
+Subject::~Subject() {}

@@ -3,20 +3,53 @@
 
 using namespace std;
 
-Bathroom::Bathroom() : EventUnit()
+Bathroom::Bathroom(string name, int capacity) : EventUnit(name, capacity)
 {
+    cleanliness = 100; // start clean
+    previousCapacity = capacity;
 }
 
-Bathroom::Bathroom(string name, string status, int capacity) 
-: EventUnit(name, status, capacity), cleanlines(0)
+Bathroom::~Bathroom() {}
+
+void Bathroom::update(string noticeType)
 {
+    if (noticeType == "WEATHER_ALERT")
+    {
+        cleanliness -= 10;
+        cout << "Bathroom " << getName() << " cleanliness decreased to " << cleanliness << " due to WEATHER ALERT." << endl;
+    }
+    else if (noticeType == "CAPACITY_ALERT")
+    {
+        if (getCapacity() > previousCapacity)
+        {
+            cleanliness -= 5;
+            cout << "Bathroom " << getName() << " cleanliness decreased due to capacity." << endl;
+        }
+        else if (getCapacity() < previousCapacity)
+        {
+            cleanliness += 5;
+            cout << "Bathroom " << getName() << " cleanliness increased due to capacity." << endl;
+        }
+        previousCapacity = getCapacity();
+    }
+    else if (noticeType == "EVACUATE")
+    {
+        close();
+    }
+    else if (noticeType == "OPEN")
+    {
+        open();
+    }
+    else if (noticeType == "CLOSE")
+    {
+        close();
+    }
 }
 
-Bathroom::~Bathroom(){}
-
-void Bathroom::update(string noticeType) {}
-
-void Bathroom::reportStatus() const {}
+void Bathroom::reportStatus() const
+{
+    cout << "  - Bathroom: " << getName() << " | Capacity: " << getCapacity() << endl;
+}
 
 int Bathroom::getCapacity() const
 {
@@ -25,12 +58,10 @@ int Bathroom::getCapacity() const
 
 void Bathroom::open()
 {
-    setStatus("OPEN");
-    cout << "Bathroom " << getName() << " opened." << endl;
+    cout << "Bathroom " << getName() << " is open." << endl;
 }
 
 void Bathroom::close()
 {
-    setStatus("CLOSE");
-    cout << "Bathroom " << getName() << " closed." << endl;
+    cout << "Bathroom " << getName() << " is closed." << endl;
 }

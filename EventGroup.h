@@ -13,7 +13,7 @@ public:
     void add(EventComponent *component) override;
     void remove(EventComponent *component) override;
     EventGroup();
-    EventGroup(int capacity, string status, string name);
+    EventGroup(int capacity, string name);
     ~EventGroup();
     void update(string noticeType) override;
     void reportStatus() const override;

@@ -9,6 +9,7 @@ class Observer
 {
 public:
     virtual void update(string noticeType) = 0;
+    virtual ~Observer() = default;
 };
 
 #endif

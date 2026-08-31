@@ -7,7 +7,13 @@ class Food : public EventUnit
 {
 public:
     Food();
-    Food(string name, string status, int capacity);
+
+private:
+    int foodLeft;
+    int previousCapacity;
+
+public:
+    Food(string name, int capacity);
     ~Food();
     void update(string noticeType) override;
     void reportStatus() const override;

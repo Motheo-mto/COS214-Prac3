@@ -1,4 +1,5 @@
 #include "EventGroup.h"
+#include "Gate.h"
 #include <iostream>
 
 using namespace std;
@@ -7,8 +8,8 @@ EventGroup::EventGroup() : EventComponent()
 {
 }
 
-EventGroup::EventGroup(int capacity, string status, string name)
-    : EventComponent(name, status, capacity)
+EventGroup::EventGroup(int capacity, string name)
+    : EventComponent(name, capacity)
 {
 }
 
@@ -35,6 +36,12 @@ void EventGroup::add(EventComponent *component)
         }
     }
     children.push_back(component);
+
+    Observer *obs = dynamic_cast<Observer *>(component);
+    if (obs != nullptr)
+    {
+        attach(obs);
+    }
 }
 
 void EventGroup::remove(EventComponent *component)
@@ -46,6 +53,11 @@ void EventGroup::remove(EventComponent *component)
     {
         if (children[i] == component)
         {
+            Observer *obs = dynamic_cast<Observer *>(component);
+            if (obs != nullptr)
+            {
+                detach(obs);
+            }
             children.erase(children.begin() + i);
             return;
         }
@@ -54,16 +66,31 @@ void EventGroup::remove(EventComponent *component)
 
 void EventGroup::update(string noticeType)
 {
-    
-    for (size_t i = 0; i < children.size(); i++)
+    if (noticeType == "OPEN")
     {
-        // reference base class pointer
-        Observer *observer = dynamic_cast<Observer *>(children[i]);
-        if (observer != nullptr)
+    }
+    else if (noticeType == "CLOSE")
+    {
+    }
+    else if (noticeType == "CAPACITY_ALERT")
+    {
         {
-            observer->update( noticeType);
+            if (getCapacity() > 1500)
+            {
+                cout << "EventGroup " << getName() << " capacity is greater than 1500. Closing all gates!" << endl;
+                for (EventComponent *comp : children)
+                {
+                    Gate *gate = dynamic_cast<Gate *>(comp);
+                    if (gate != nullptr)
+                    {
+                        gate->close();
+                    }
+                }
+            }
         }
     }
+
+    notify(noticeType);
 }
 
 int EventGroup::getCapacity() const
@@ -76,25 +103,29 @@ int EventGroup::getCapacity() const
     return total;
 }
 
-/// still need to implement these, i dont know how
 void EventGroup::reportStatus() const
 {
+    cout << "--- Group: " << getName() << " | Capacity: " << getCapacity() << " ---" << endl;
+    for (size_t i = 0; i < children.size(); i++)
+    {
+        children[i]->reportStatus();
+    }
 }
 
 void EventGroup::open()
 {
-    setStatus("OPEN");
-    for (size_t i = 0; i < children.size(); i++)
+    cout << "EventGroup " << getName() << " is open." << endl;
+    for (EventComponent *comp : children)
     {
-        children[i]->open();
+        comp->open();
     }
 }
 
 void EventGroup::close()
 {
-    setStatus("CLOSE");
-    for (size_t i = 0; i < children.size(); i++)
+    cout << "EventGroup " << getName() << " is closed." << endl;
+    for (EventComponent *comp : children)
     {
-        children[i]->close();
+        comp->close();
     }
 }

@@ -2,11 +2,11 @@
 
 using namespace std;
 
-EventComponent::EventComponent() : name(""), capacity(0), status("")
+EventComponent::EventComponent() : name(""), capacity(0)
 {
 }
 
-EventComponent::EventComponent(string name, string status, int capacity) : name(name), capacity(capacity), status(status)
+EventComponent::EventComponent(string name, int capacity) : name(name), capacity(capacity)
 {
 }
 
@@ -32,12 +32,12 @@ void EventComponent::setName(string n)
     name = n;
 }
 
-void EventComponent::setStatus(string n)
-{
-    status = n;
-}
-
 void EventComponent::setCapacity(int n)
 {
     capacity = n;
+}
+
+int EventComponent::getCapacity() const
+{
+    return capacity;
 }

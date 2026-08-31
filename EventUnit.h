@@ -8,7 +8,7 @@ class EventUnit : public EventComponent, public Observer
 public:
     ~EventUnit();
     EventUnit();
-    EventUnit(string name, string status, int capacity);
+    EventUnit(string name, int capacity);
     virtual void update(string noticeType) = 0;
     virtual void reportStatus() const = 0;
     virtual int getCapacity() const = 0;

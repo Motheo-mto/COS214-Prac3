@@ -3,15 +3,37 @@
 
 using namespace std;
 
-Gate::Gate(string name, string status, int capacity) : EventUnit(name, status, capacity)
+Gate::Gate(string name, int capacity) : EventUnit(name, capacity)
 {
 }
 
 Gate::~Gate() {}
 
-void Gate::update(string noticeType) {}
+void Gate::update(string noticeType)
+{
+    if (noticeType == "WEATHER_ALERT")
+    {
+        cout << "Gate " << getName() << " remains open during WEATHER ALERT." << endl;
+    }
+    else if (noticeType == "EVACUATE")
+    {
+        open();
+        cout << "Gate " << getName() << " is forcibly opened due to EVACUATE." << endl;
+    }
+    else if (noticeType == "OPEN")
+    {
+        open();
+    }
+    else if (noticeType == "CLOSE")
+    {
+        close();
+    }
+}
 
-void Gate::reportStatus() const {}
+void Gate::reportStatus() const
+{
+    cout << "  - Gate: " << getName() << " | Capacity: " << getCapacity() << endl;
+}
 
 int Gate::getCapacity() const
 {
@@ -20,12 +42,10 @@ int Gate::getCapacity() const
 
 void Gate::open()
 {
-    setStatus("OPEN");
     cout << "Gate " << getName() << " is opened." << endl;
 }
 
 void Gate::close()
 {
-    setStatus("CLOSE");
     cout << "Gate " << getName() << " is closed." << endl;
 }
