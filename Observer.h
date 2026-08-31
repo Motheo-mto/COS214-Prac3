@@ -5,10 +5,10 @@
 
 using namespace std;
 
-class Observer{
-
-virtual void update(int capacity, string status) = 0;
-
+class Observer
+{
+public:
+    virtual void update(string status, int capacity) = 0;
 };
 
 #endif

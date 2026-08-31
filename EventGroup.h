@@ -2,23 +2,24 @@
 #define EVENTGROUP_H
 
 #include "EventComponent.h"
+#include "Observer.h"
 
+class EventGroup : public EventComponent, public Observer
+{
+private:
+    vector<EventComponent *> children;
 
-class EventGroup : public EventComponent , public Observer{
-    private:
-    vector<EventComponent*> children;
-
-    public:
-    void add(EventComponent component);
-    void remove(EventComponent component);
+public:
+    void add(EventComponent *component) override;
+    void remove(EventComponent *component) override;
     EventGroup();
     EventGroup(int capacity, string status, string name);
     ~EventGroup();
-    void update(string status, int capacity);
-    string reportStatus() const;
-    int getCapacity() const;
-    void open();
-    void close();          
+    void update(string status, int capacity) override;
+    string reportStatus() const override;
+    int getCapacity() const override;
+    void open() override;
+    void close() override;
 };
 
 #endif

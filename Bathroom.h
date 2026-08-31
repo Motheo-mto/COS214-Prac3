@@ -3,12 +3,13 @@
 
 #include "EventUnit.h"
 
-class Bathroom : public EventUnit{
-    void update(string status, int capacity);
-    string reportStatus() const;
-    int getCapacity() const;
-    void open();
-    void close(); 
+class Bathroom : public EventUnit
+{
+public:
+    void update(string status, int capacity) override;
+    string reportStatus() const override;
+    void open() override;
+    void close() override;
 };
 
 #endif
