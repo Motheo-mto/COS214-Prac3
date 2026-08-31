@@ -88,8 +88,18 @@ string EventGroup::reportStatus() const
 
 void EventGroup::open()
 {
+    setStatus("OPEN");
+    for (size_t i = 0; i < children.size(); i++)
+    {
+        children[i]->open();
+    }
 }
 
 void EventGroup::close()
 {
+    setStatus("CLOSE");
+    for (size_t i = 0; i < children.size(); i++)
+    {
+        children[i]->close();
+    }
 }
