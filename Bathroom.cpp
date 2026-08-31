@@ -8,7 +8,7 @@ Bathroom::Bathroom() : EventUnit()
 }
 
 Bathroom::Bathroom(string name, string status, int capacity) 
-: EventUnit(name, status, capacity)
+: EventUnit(name, status, capacity), cleanlines(0)
 {
 }
 
