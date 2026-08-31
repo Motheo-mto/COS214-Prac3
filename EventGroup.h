@@ -3,22 +3,22 @@
 
 #include "EventComponent.h"
 
+class EventGroup : public EventComponent, public Observer
+{
+private:
+    vector<EventComponent *> children;
 
-class EventGroup : public EventComponent , public Observer{
-    private:
-    vector<EventComponent*> children;
-
-    public:
-    void add(EventComponent component) override;
-    void remove(EventComponent component) override;
+public:
+    void add(EventComponent *component) override;
+    void remove(EventComponent *component) override;
     EventGroup();
     EventGroup(int capacity, string status, string name);
     ~EventGroup();
-    void update(int capacity, string status) override;
+    void update(string status, int capacity) override;
     string reportStatus() const override;
     int getCapacity() const override;
     void open() override;
-    void close() override;          
+    void close() override;
 };
 
 #endif

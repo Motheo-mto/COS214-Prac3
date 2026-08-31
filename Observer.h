@@ -8,7 +8,7 @@ using namespace std;
 class Observer
 {
 public:
-    virtual void update(int capacity, string status) = 0;
+    virtual void update(string status, int capacity) = 0;
 };
 
 #endif

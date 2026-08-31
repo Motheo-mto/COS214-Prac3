@@ -7,6 +7,15 @@ void Subject::attach(Observer *observer)
 {
     if (observer == nullptr)
         return;
+
+    // checking for duplicates
+    for (size_t i = 0; i < observerList.size(); i++)
+    {
+        if (observerList[i] == observer)
+        {
+            return;
+        }
+    }
     observerList.push_back(observer);
 }
 
@@ -33,6 +42,6 @@ void Subject::notify(int capacity, string status)
     vector<Observer *>::iterator it;
     for (it = observerList.begin(); it != observerList.end(); ++it)
     {
-        (*it)->update(capacity, status);
+        (*it)->update(status, capacity);
     }
 }

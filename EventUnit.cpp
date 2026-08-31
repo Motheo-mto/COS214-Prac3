@@ -3,7 +3,15 @@
 
 using namespace std;
 
-void EventUnit::update()
+EventUnit::EventUnit() : EventComponent()
 {
-    
+}
+
+EventUnit::EventUnit(string name, string status, int capacity)
+    : EventComponent(name, status, capacity)
+{
+}
+
+EventUnit::~EventUnit()
+{
 }
