@@ -11,7 +11,7 @@ class Subject{
     public:
     void attach(Observer* observer);
     void detach(Observer* observer);
-    void notify(int capacity, string status);
+    void notify(string notifyType);
     virtual ~Subject();
 };
 

@@ -15,7 +15,7 @@ public:
     EventGroup();
     EventGroup(int capacity, string status, string name);
     ~EventGroup();
-    void update(string status, int capacity) override;
+    void update(string noticeType) override;
     void reportStatus() const override;
     int getCapacity() const override;
     void open() override;

@@ -9,9 +9,10 @@ public:
     ~EventUnit();
     EventUnit();
     EventUnit(string name, string status, int capacity);
-    virtual void update(string status, int capacity) = 0;
+    virtual void update(string noticeType) = 0;
     virtual void reportStatus() const = 0;
     virtual int getCapacity() const = 0;
+    bool isOpen;
 };
 
 #endif

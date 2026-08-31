@@ -6,7 +6,7 @@
 class Merch : public EventUnit
 {
 public:
-    void update(string status, int capacity) override;
+    void update(string noticeType) override;
     void reportStatus() const override;
     void open() override;
     void close() override;

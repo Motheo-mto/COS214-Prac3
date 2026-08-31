@@ -3,7 +3,7 @@
 
 using namespace std;
 
-EventUnit::EventUnit() : EventComponent()
+EventUnit::EventUnit() : EventComponent(), isOpen(false)
 {
 }
 

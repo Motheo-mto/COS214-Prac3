@@ -52,21 +52,16 @@ void EventGroup::remove(EventComponent *component)
     }
 }
 
-void EventGroup::update(string status, int capacity)
+void EventGroup::update(string noticeType)
 {
-    setStatus(status);
-    if (capacity > 0)
-    {
-        setCapacity(capacity);
-    }
-
+    
     for (size_t i = 0; i < children.size(); i++)
     {
         // reference base class pointer
         Observer *observer = dynamic_cast<Observer *>(children[i]);
         if (observer != nullptr)
         {
-            observer->update(status, capacity);
+            observer->update( noticeType);
         }
     }
 }

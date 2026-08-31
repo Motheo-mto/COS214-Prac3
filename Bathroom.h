@@ -6,10 +6,16 @@
 class Bathroom : public EventUnit
 {
 public:
-    void update(string status, int capacity) override;
+    Bathroom();
+    Bathroom(string name, string status, int capacity);
+    ~Bathroom();
+    void update(string noticeType) override;
     void reportStatus() const override;
+    int getCapacity() const override;
     void open() override;
     void close() override;
+private:
+    int cleanlines;
 };
 
 #endif

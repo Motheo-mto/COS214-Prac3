@@ -37,11 +37,11 @@ void Subject::detach(Observer *observer)
     }
 }
 
-void Subject::notify(int capacity, string status)
+void Subject::notify(string noticeType)
 {
     vector<Observer *>::iterator it;
     for (it = observerList.begin(); it != observerList.end(); ++it)
     {
-        (*it)->update(status, capacity);
+        (*it)->update(noticeType);
     }
 }
